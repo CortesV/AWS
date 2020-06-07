@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=aws_test
+      - POSTGRES_HOST_AUTH_METHOD=trust
+  localstack:
+    image: localstack/localstack:0.8.6
+    container_name: localstack
+    ports:
+      - '4576:4576'
+      - '4572:4572'
+      - '4569:4569'
+    environment:
+      - SERVICES=s3,sqs,dynamodb
+      - DEFAULT_REGION=eu-west-1

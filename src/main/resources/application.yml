@@ -1,0 +1,11 @@
+localstack:
+  sqs:
+    url: http://localhost:4576
+cloud:
+  aws:
+    credentials:
+      access-key: test
+      secret-key: test
+    region:
+      auto: true
+      static: eu-west-2
