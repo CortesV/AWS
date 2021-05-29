@@ -18,10 +18,10 @@ public class AWSRestController {
 
     @GetMapping("{message}")
     public ResponseEntity<?> pushEvent(@PathVariable("message") String message) {
-        //queuePublisher.sendMessage(message);
-        //queuePublisher.sendMessageToStandardQueue(message);
-        //queuePublisher.sendMessageToFIFOQueue(message);
-        //queuePublisher.sendMessageWithDelay("test queue message with delay");
+        queuePublisher.sendMessage(message);
+        queuePublisher.sendMessageToStandardQueue(message);
+        queuePublisher.sendMessageToFIFOQueue(message);
+        queuePublisher.sendMessageWithDelay("test queue message with delay");
         queuePublisher.sendMultipleMessageToQueue(message);
         return ResponseEntity.ok().build();
     }

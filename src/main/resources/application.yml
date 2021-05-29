@@ -1,11 +1,14 @@
 localstack:
   sqs:
     url: http://localhost:4576
+# Disables ConditionalOnAwsCloudEnvironment check with execution call to AWS
+spring.autoconfigure.exclude: org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration,org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration
+# disable getting credentials from ~/.aws directory
 cloud:
   aws:
     credentials:
       access-key: test
       secret-key: test
     region:
-      auto: true
+      auto: false
       static: eu-west-2
