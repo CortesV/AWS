@@ -21,3 +21,6 @@ dynamodb:
   table: dns-logs-search-result
   item-expiration-time: 7d
   max-batch-size: 25
+
+s3:
+  endpoint: http://localhost:4572

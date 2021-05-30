@@ -1,6 +1,7 @@
 package com.devcortes.aws;
 
 import com.devcortes.aws.dynamodb.DynamoDBService;
+import com.devcortes.aws.s3.S3Service;
 import com.devcortes.aws.sqs.QueuePublisher;
 import com.devcortes.aws.sqs.SpringQueuePublisher;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ public class AWSRestController {
     private final QueuePublisher queuePublisher;
     private final SpringQueuePublisher springQueuePublisher;
     private final DynamoDBService dynamoDBService;
+    private final S3Service s3Service;
 
     @GetMapping("/sqs/{message}")
     public ResponseEntity<?> pushEvent(@PathVariable("message") String message) {
@@ -38,6 +40,12 @@ public class AWSRestController {
     public ResponseEntity<?> dynamoDB() {
         dynamoDBService.createTableWithBean();
         dynamoDBService.createTableWithoutBean();
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/s3")
+    public ResponseEntity<?> s3() {
+        s3Service.createBucket();
         return ResponseEntity.ok().build();
     }
 }
