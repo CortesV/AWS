@@ -1,14 +1,23 @@
 localstack:
   sqs:
     url: http://localhost:4576
+
+cloud.aws.stack.auto: false
+
 # Disables ConditionalOnAwsCloudEnvironment check with execution call to AWS
 spring.autoconfigure.exclude: org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration,org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration
 # disable getting credentials from ~/.aws directory
 cloud:
   aws:
     credentials:
-      access-key: test
-      secret-key: test
+      accessKey: x
+      secretKey: x
     region:
-      auto: false
-      static: eu-west-2
+      static: us-west-2
+
+dynamodb:
+  region: us-west-2
+  endpoint: http://localhost:4569
+  table: dns-logs-search-result
+  item-expiration-time: 7d
+  max-batch-size: 25

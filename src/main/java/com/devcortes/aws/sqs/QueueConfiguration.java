@@ -11,13 +11,14 @@ import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class QueueConfiguration {
 
-    @Value("${cloud.aws.credentials.access-key}")
+    @Value("${cloud.aws.credentials.accessKey}")
     private String accessKey;
-    @Value("${cloud.aws.credentials.secret-key}")
+    @Value("${cloud.aws.credentials.secretKey}")
     private String secretKey;
     @Value("${localstack.sqs.url}")
     private String serviceEndpoint;

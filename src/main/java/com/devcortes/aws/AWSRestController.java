@@ -16,7 +16,7 @@ public class AWSRestController {
     private final QueuePublisher queuePublisher;
     private final SpringQueuePublisher springQueuePublisher;
 
-    @GetMapping("{message}")
+    @GetMapping("/sqs/{message}")
     public ResponseEntity<?> pushEvent(@PathVariable("message") String message) {
         queuePublisher.sendMessage(message);
         queuePublisher.sendMessageToStandardQueue(message);
@@ -26,7 +26,7 @@ public class AWSRestController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/v1/{message}")
+    @GetMapping("/sqs/v1/{message}")
     public ResponseEntity<?> springPushEvent(@PathVariable("message") String message) {
         springQueuePublisher.sendMessage(message);
         return ResponseEntity.ok().build();
