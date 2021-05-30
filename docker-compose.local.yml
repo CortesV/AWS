@@ -20,3 +20,9 @@ services:
       - DEFAULT_REGION=us-west-2
       - AWS_ACCESS_KEY_ID=x
       - AWS_SECRET_ACCESS_KEY=x
+  kinesis:
+    image: saidsef/aws-kinesis-local:latest
+    command: --port 4567
+    restart: always
+    ports:
+      - 4567:4567

@@ -52,6 +52,12 @@
         </dependency>
 
         <dependency>
+            <groupId>software.amazon.kinesis</groupId>
+            <artifactId>amazon-kinesis-client</artifactId>
+            <version>2.3.4</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-repository-api</artifactId>
             <version>3.6.3</version>

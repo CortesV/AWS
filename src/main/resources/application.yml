@@ -24,3 +24,6 @@ dynamodb:
 
 s3:
   endpoint: http://localhost:4572
+
+kinesis:
+  endpoint: http://localhost:4567
