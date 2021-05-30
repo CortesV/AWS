@@ -1,5 +1,6 @@
 package com.devcortes.aws;
 
+import com.devcortes.aws.dynamodb.DynamoDBService;
 import com.devcortes.aws.sqs.QueuePublisher;
 import com.devcortes.aws.sqs.SpringQueuePublisher;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AWSRestController {
     private final QueuePublisher queuePublisher;
     private final SpringQueuePublisher springQueuePublisher;
+    private final DynamoDBService dynamoDBService;
 
     @GetMapping("/sqs/{message}")
     public ResponseEntity<?> pushEvent(@PathVariable("message") String message) {
@@ -29,6 +31,13 @@ public class AWSRestController {
     @GetMapping("/sqs/v1/{message}")
     public ResponseEntity<?> springPushEvent(@PathVariable("message") String message) {
         springQueuePublisher.sendMessage(message);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/dynamodb")
+    public ResponseEntity<?> dynamoDB() {
+        dynamoDBService.createTableWithBean();
+        dynamoDBService.createTableWithoutBean();
         return ResponseEntity.ok().build();
     }
 }

@@ -17,4 +17,6 @@ services:
       - '4569:4569'
     environment:
       - SERVICES=s3,sqs,dynamodb
-      - DEFAULT_REGION=eu-west-1
+      - DEFAULT_REGION=us-west-2
+      - AWS_ACCESS_KEY_ID=x
+      - AWS_SECRET_ACCESS_KEY=x
